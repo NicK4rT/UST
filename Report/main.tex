@@ -1,20 +1,228 @@
-\documentclass{report}
+\documentclass[10pt,a4]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[top=20mm, left=20mm, bottom=20mm, right=20mm]{geometry}
+\usepackage{svg}
+\usepackage{graphicx}
+\usepackage[nosumlimits]{amsmath}
 
-\title{Urban Systems and Transportation \\ Research Paper Summary 1}
-\author{Nicolas Triebold}
-\date{September 2022}
+\usepackage[
+    backend=biber, 
+    natbib=true,
+    style=numeric,
+    sorting=none
+]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{\vspace{.0cm}Urban Systems and Transportation \\ Final Project \vspace{5cm}\\ \textbf{Report Title}\vspace{3.5cm}}
+\author{Jan-Philip Erdmann, Samuel Luther, Nils Renziehausen, \\Ane Nielsen Solberg, Nicolas Y.C. Triebold\vspace{1cm}}
+\date{December 2022}
 
 \begin{document}
-
+\pagenumbering{gobble}
 \maketitle
+\newpage
+\pagenumbering{arabic}
 
-\section{Research questions}
+\section{Table of Contents}
 
-\section{Methods}
+\newpage
 
-\section{Key results}
+\section{Introduction}
+As part of the autumn semester 2022 course \textit{Urban Systems and Transportation}\cite{course} at ETH Zurich, we have been tasked to look in to the effects of climate change related exposures on different regions, define and calculate local and external economical costs and build a model which simulates the behaviour of individuals and the business sector to certain developments. Based on these models we were then tasked to come up with different transfer strategies, which we are to evaluate and compare.\\\\
+In accordance with the given assignment specifications for the final project, we have decided to focus on the United Kingdom (UK) and build an economical cost model based on different risk factors, as well as assets. We will be comparing geographical locations at the regional level, as seen in the map and list of statistical regions in figure \ref{dg:ITL Uk}.\\
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{.5\textwidth}
+      \centering
+      \resizebox{0.8\textwidth}{!}{\includesvg[width=200pt]{NUTS_1_statistical_regions_of_the_United_Kingdom_map.svg}}
+      \caption{ITL - statistical regions in the UK}
+      \label{dg:ITL Uk}
+  \end{minipage}%
+  \begin{minipage}{.5\textwidth}
+    \vspace{-2cm}
+    \begin{itemize}
+            \item[] \hspace{-.5cm}\textbf{ITL statistical regions in the UK:}
+            \item[]
+            \item \textbf{C} North East England
+            \item \textbf{D} North West England
+            \item \textbf{E} Yorkshire and the Humber
+            \item \textbf{F} East Midlands
+            \item \textbf{G} West Midlands
+            \item \textbf{H} East of England
+            \item \textbf{I} London
+            \item \textbf{J} South East England
+            \item \textbf{K} South West England
+            \item \textbf{L} Wales
+            \item \textbf{M} Scotland
+            \item \textbf{N} Northern Ireland
+        \end{itemize}
+    \end{minipage}
+\end{figure}
 
-\section{Innovations of the paper}
+\section{Data collection}
+
+\subsection{Risk data}
+\subsubsection{Temperature increase}
+\subsubsection{Rainfall}
+\subsubsection{Flood risk}
+\subsubsection{$CO_2$ emissions}
+\subsubsection{Fire risk}
+
+\subsection{Asset data}
+\subsubsection{GDP}
+\subsubsection{Motorway infrastructure}
+\subsubsection{Port infrastructure}
+\subsubsection{Energy generation}
+\subsubsection{Agricultural land use}
+\subsubsection{Population}
+\subsubsection{Area}
+\subsubsection{Wage - Income}
+\subsubsection{Regional productivity}
+
+\section{Monetary risk estimation}
+\section{Model}
+
+The model uses the following structure to estimate the welfare after transfer payments and reallocation of people. Index $i$ denotes the ITL region.
+The model runs multiple times (t = 10). Each run represents one year. The reason is, a change in population though reallocation of people due to a change in attractiveness with the transfer payments the properties of the region are changing. A changing population has an affect on risk per capita formula \ref{risk per capita} and population density formula \ref{population density} with consequences to all following equations. At each consecutive run the newly crated population allocation in the UK is used to calculate the resulting welfare of the transfer schedule.
+\newline
+\begin{center}
+\textbf{\textit{For t = 0,10:}}\vspace{.5cm}
+
+The risk per capita is calculated by formula \ref{risk per capita}:
+\begin{equation}
+    rpc_{i,t} = \frac{r_{total,i}}{population_{i,t-1}} 
+    \label{risk per capita}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+The population density is provided by formula \ref{population density}:
+\begin{equation}
+    pd_{i,t} = \frac{population_{i,t-1}}{area_i}
+    \label{population density}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+The following correlation formula \ref{wage pop density} of wages $w_{i,t}$ and population density $pd_{i,t}$ is used to estimate the wage $w_{i,t}$ in each region per year:
+\begin{equation}
+    w_{i,t} = (0,0359*pd_{i,t}+598,74) * 52
+    \label{wage pop density}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+Following correlation formula \ref{housing price} of real estate prices $h_i$ to population density $pd_{i,t}$, wages $w_{i,t}$, and fininancing rate of over 20 years is found to estimate the yearly amount spend by residents on housing $h_{i,t}$ in each region:
+\begin{equation}
+%unkown at the moment NILS has to tell me
+    h_{i,t} = \frac{(0.0014*pd_{i,t}+7.0373) * w_{i,t}}{20}
+    \label{housing price}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+A transfer payment scheme is used to reallocate money from one region to another according to an underlying principle. All transfer schedules have in common that a tax between 0\% and 100\% is applied. Every rate is tired out. E.g. transfer schedule 1 formula \ref{transfer schedule 1} where the transferred amount depends only on the regional per capita risk level. See further down for other transfer schedules:
+\newline
+\newline
+\textbf{\textit{For $tax$ = 0\% to 100\%:}}
+\begin{equation}
+    t_{i,t,tax} = tax * \sum_i w_{i,t} * \frac{rpc_{i,t}}{\sum_i rpc_{i,t}} - tax * w_{i,t}
+    \label{transfer schedule 1}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+The attractiveness of a given regions is provided by formula \ref{attractiveness region}: 
+\begin{equation}
+    v_{i,t,tax} = \frac{b_i*(w_{i,t}+t_{i,t,tax}-h_{i,t})}{rpc_{i,t}}
+    \label{attractiveness region}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+Formula \ref{attractiveness region comparison} gives a comparison of the attractiveness of regions and makes them thereby comparable:
+\begin{equation}
+    \Pi_{i,t,tax} = \frac{v_{i,t,tax}}{\sum_i v_{i,t,tax}}
+    \label{attractiveness region comparison}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+The attractiveness of a region $\Pi_{i,t,tax}$ leads to a population allocation accordingly with formula \ref{population share}. $H_{total}$ corresponds to the total population of the UK:
+\begin{equation}
+    H_{i,t,tax} = \Pi_{i,t,tax} * H_{total}
+    \label{population share}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+The productivity of the region is given by formula \ref{productivity} by scaling the population with regional productive factor $pf_i$:
+\begin{equation}
+%pf_productivity facotr
+    A_{i,t,tax} = H_{i,t,tax} * pf_i
+    \label{productivity}
+\end{equation}
+
+\begin{center}
+    $\downarrow$
+\end{center}
+Total welfare $W$ is the sum of all regional productivities given by formula \ref{total welfare}:
+\begin{equation}
+    W_{t,tax} = \sum_i A_{i,t,tax}
+    \label{total welfare}
+\end{equation}
+\end{center}
+\textbf{\textit{Next $tax$}}
+\newline
+\textbf{\textit{Next t}}
+
+\subsection{Determination of parameter $b_i$}
+To implement the model and make it run following steps were required.
+First, the unknown factor $b_i$ in formula \ref{attractiveness region} has to be estimated. We have the assumption that currently the risk is considered by people living in each region, therefore the population given by the model through formula \ref{population share} has to be equal to the actual observed regional population in the UK. Using the formulas \ref{risk per capita} to \ref{population share} in MS-Excel with a Solver with the aim to fulfill formula \ref{solver equation} under variation of $b_i$ the $b_i$ for each region is estimated.
+\begin{equation}
+    H_i(b_i) \stackrel{!}{=}  H_{actual,i}
+    \label{solver equation}
+\end{equation}
+
+\subsection{Transfer schedule 1}
+The first transfer schedule is already mentioned previously. See formula \ref{transfer schedule 1} or below.
+\begin{equation}
+    t_{i,t,tax} = tax * \sum_i w_{i,t} * \frac{rpc_{i,t}}{\sum_i rpc_{i,t}} - tax * w_{i,t}
+    \label{transfer schedule 1 again}
+\end{equation}
+The motivation for this transfer schedule is the idea that we just look at the exposed risk for each region and allocate resources accordingly. Regions with low per capita risk "subsidise" regions with a high risk per capita.
+
+\subsection{Transfer schedule 2}
+
+\begin{equation}
+    t_{i,t,tax} = tax * \sum_i w_{i,t} * \frac{\frac{rpc_{i,t}}{\sum_i rpc_{i,t}} + \frac{pd_{i,t}}{\sum_i pd_{i,t}}}{2} - tax * w_{i,t}
+    \label{transfer schedule 2}
+\end{equation}
+Formula \ref{transfer schedule 2} gives the second transfer schedule. The underlying idea is that highly populated areas should be prioritized over sparsely populated areas since densely populated area can be saved on a lower per capita effort and a relocation few people is easier than of many.
+
+\subsection{Transfer schedule 3}
+The third transfer schedule is a combination of the first two. \textbf{GIVE EXPLANATION, better formula maybe}
+
+\begin{equation}
+    t_{i,t,tax} = \frac{tax * \sum_i w_{i,t} * \frac{rpc_{i,t}}{\sum_i rpc_{i,t}} - tax * w_{i,t} + tax * \sum_i w_{i,t} * \frac{\frac{rpc_{i,t}}{\sum_i rpc_{i,t}} + \frac{pd_{i,t}}{\sum_i pd_{i,t}}}{2} - tax * w_{i,t}}{2} 
+    \label{transfer schedule 3}
+\end{equation}
+
+
+\section{Results/Evaluation}
+%whatever sounds better to you
+
+\section{Conclusion}
+
+\section{References}
 
 \end{document}
