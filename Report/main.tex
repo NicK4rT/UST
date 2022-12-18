@@ -14,7 +14,7 @@
 
 \addbibresource{references.bib}
 
-\title{\vspace{.0cm}Urban Systems and Transportation \\ Final Project \vspace{5cm}\\ \textbf{Report Title}\vspace{3.5cm}}
+\title{\vspace{.0cm}Urban Systems and Transportation \\ Final Project \vspace{5cm}\\ \textbf{Regional Transfers to Fund Resilient Local Communities}\vspace{1 cm}}
 \author{Jan-Philip Erdmann, Samuel Luther, Nils Renziehausen, \\Ane Nielsen Solberg, Nicolas Y.C. Triebold\vspace{1cm}}
 \date{December 2022}
 
@@ -24,25 +24,27 @@
 \newpage
 \pagenumbering{arabic}
 
-\section{Table of Contents}
+%\section{Table of Contents}
 
-\newpage
-
+%\newpage
+\begin{abstract}
+Abstract of report
+\end{abstract}
 \section{Introduction}
-As part of the autumn semester 2022 course \textit{Urban Systems and Transportation}\cite{course} at ETH Zurich, we have been tasked to look in to the effects of climate change related exposures on different regions, define and calculate local and external economical costs and build a model which simulates the behaviour of individuals and the business sector to certain developments. Based on these models we were then tasked to come up with different transfer strategies, which we are to evaluate and compare.\\\\
-In accordance with the given assignment specifications for the final project, we have decided to focus on the United Kingdom (UK) and build an economical cost model based on different risk factors, as well as assets. We will be comparing geographical locations at the regional level, as seen in the map and list of statistical regions in figure \ref{dg:ITL Uk}.\\
+As part of the autumn semester 2022 course \textit{Urban Systems and Transportation}\cite{course} at ETH Zurich, we have executed research looking into the effects of climate change related exposures on regions of The United Kingdom (UK), defined and calculated local and external economical costs, and build a model which simulates the reaction of individuals and firms to transfers. The model explores different transfer strategies and are evaluated by the metrics and welfare function. \\\\
+In accordance with the given assignment specifications for the final project, we have decided to focus on the United Kingdom (UK) and build an economical cost model based on risk factors for climate change exposures, as well as transportation and infrastructure assets. The report compares geographical locations at the regional level, as seen in the map and list of statistical regions in Figure \ref{dg:ITL Uk}.\\
 \begin{figure}[h]
   \centering
   \begin{minipage}{.5\textwidth}
       \centering
       \resizebox{0.8\textwidth}{!}{\includesvg[width=200pt]{NUTS_1_statistical_regions_of_the_United_Kingdom_map.svg}}
-      \caption{ITL - statistical regions in the UK}
+      \caption{ITL - statistical regions in the UK \cite{zotero-176}}
       \label{dg:ITL Uk}
   \end{minipage}%
   \begin{minipage}{.5\textwidth}
     \vspace{-2cm}
     \begin{itemize}
-            \item[] \hspace{-.5cm}\textbf{ITL statistical regions in the UK:}
+            \item[] \hspace{-.5cm}\textbf{Legend:}
             \item[]
             \item \textbf{C} North East England
             \item \textbf{D} North West England
@@ -63,14 +65,21 @@ In accordance with the given assignment specifications for the final project, we
 \section{Data collection}
 
 \subsection{Risk data}
+Risk data was gathered in order to define the exposure of climate changes occurring in relation to different sets of assets. 
 \subsubsection{Temperature increase}
-\subsubsection{Rainfall}
-\subsubsection{Flood risk}
-\subsubsection{$CO_2$ emissions}
-\subsubsection{Fire risk}
 
+\subsubsection{Rainfall}
+United Kingdom Climate Projections User Interface (UKCP UI) provides tools and data of the latest updates for climate projections, enabling users to follow future climate trends in the UK. The service provide regional, global, probabilistic, marine and derived projections. We used their data sets for gathering data of the standard deviation of $mm$ rainfall in each region of the UK. \cite{}[cite! I could not access the web page can you put the link?]
+\subsubsection{Flood risk}
+The gov.uk official statistics website offers data on floods and flood risk and it provides the possibility for reviewing the long-term flood risk exposure for specific addresses. However, the underlying data set is not made public. Hence, we used a sampling of $N$ random addresses in the different regions to estimate the regional flood risk. \cite{where}
+\subsubsection{$CO_2$ emissions}
+Regional $CO_2$ emissions data from 2005 to 2019 could be directly sourced and downloaded from the official gov.uk statistics website. \cite{uk}
+\subsubsection{Fire risk}
+Regional fire risk data was difficult to detect and the only usable data we could access was charts denoting the fire number and burnt area per year for the countries of England, North Ireland, Scotland and Wales. These were manually transcribed. \cite{countryprofile}
 \subsection{Asset data}
+Asset data were gathered to define a set of available resources with economical value in the UK regions as well as population data. The value of the resources available and risks related to climate change on the specific asset will define what costs an exposure will inflict. 
 \subsubsection{GDP}
+GDP was used as a measure for the size of the regional economies.  
 \subsubsection{Motorway infrastructure}
 \subsubsection{Port infrastructure}
 \subsubsection{Energy generation}
@@ -223,6 +232,5 @@ The third transfer schedule is a combination of the first two. \textbf{GIVE EXPL
 
 \section{Conclusion}
 
-\section{References}
-
+\printbibliography
 \end{document}
