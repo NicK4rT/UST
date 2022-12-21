@@ -24,7 +24,7 @@
 
 \addbibresource{references.bib}
 
-\setlength{\parindent}{0em} 
+\setlength{\parindent}{0em}
 
 \title{\vspace{.0cm}Urban Systems and Transportation \\ Final Project \vspace{5.5cm}\\ \textbf{Regional Transfers to Fund Resilient Local Communities}\vspace{3.5 cm}}
 \author{Jan-Philip Erdmann, Samuel Luther, Nils Renziehausen, \\Ane Nielsen Solberg, Nicolas Y.C. Triebold\vspace{1cm}}
@@ -40,14 +40,23 @@
 
 %\newpage
 \begin{abstract}
-Abstract of report
+Nature is the source of life and at the same time posing significant risks to humankind. In a changing climate, awareness and resilience to risks are paramount for modern societies. In order to build resilience, societies as a whole must reallocate resources. This paper investigates the impact of different risk-based transfer schedules for tax income between the first-level NUTS regions in the United Kingdom on overall welfare.
+\\
+This paper shows that efficient redistribution through tax systems can significantly increase the United Kingdom's welfare. At the same time, careful consideration of feedback loops and multiplier effects of measures over several years remain the most crucial challenge in designing policy measures—the four models tested in this paper yield contradicting results when accounting for different real-world effects. Additionally, the models showed different sensitivities to core indicators. Two aspects are therefore highlighted: Firstly, careful design of policies is paramount because small parameter changes can significantly affect welfare. Secondly, more research is needed to understand the interplay of several feedback loops and parameters better.
+\\
+To reach these conclusions, in the first step, temperature, flood, rain and CO2 emission risks on assets such as motorways, rail infrastructure and ports are quantified. In the second step, four different models for the redistribution of tax income are developed and evaluated for various parameters, taxation patterns, and timespans.
 \end{abstract}
+\newpage
+\tableofcontents
 \newpage
 \section{Introduction}
 As part of the autumn semester 2022 course \textit{Urban Systems and Transportation} at ETH Zurich \cite{course}, we have executed research looking into the effects of climate change related exposures on regions of the United Kingdom (UK), defined and calculated local and external economical costs, and build a model which simulates the reaction of individuals and firms to transfers. The model explores different transfer strategies and are evaluated by the metrics and welfare function. \\\\
-Strategies for regional transfers to fund resilient local communities are important to ...
+The model uses a similar approach to the paper "The Economics of Density:
+Evidence From the Berlin Wall" by Ahlfeldt et al. 2015 \cite{ahlfeldt2015economics}. External effects are being observed by a change of residential and economic activity within the city of Berlin. The set up model by Ahlfeldt et al. corresponds to the observed reality. This concept of allocation of residents is applied in our model.
 \\\\
-In accordance with the given assignment specifications for the final project, we have decided to focus on the UK and build an economical cost model based on risk factors for climate change exposures, as well as transportation and infrastructure assets. The report compares geographical locations at the regional first level NUTS (nomenclature d'unités territoriales statistiques)\cite{2022firstlevel,noauthor_international_2022}, as seen in the map and list of statistical regions in figure \ref{fig:ITLUk}.\\
+Strategies for regional transfers to fund resilient local communities are important to be able to cope with risks associated to the change in climate. Without regional transfers some regions may be unable to manage the negative effects. Not every transfer schedule improves overall welfare as can be seen in our findings. The \textit{right} schedule has to be found.
+\\\\
+In accordance with the given assignment specifications for the final project, we have decided to focus on the UK and build an economical cost model based on risk factors for climate change exposures, as well as transportation and infrastructure assets. The report compares geographical locations at the regional first level NUTS (nomenclature d'unités territoriales statistiques)\cite{2022firstlevel,2022international}, as seen in the map and list of statistical regions in figure \ref{fig:ITLUk}.\\
 \begin{figure}[H]\hspace{1.25cm}
   %\centering
   \begin{minipage}{.5\textwidth}\hspace{.75cm}
@@ -88,20 +97,20 @@ Risk data was gathered in order to define the exposure of climate changes occurr
 \centering
 \begin{tabular}{|l|>{\raggedleft\arraybackslash}m{2cm}|>{\raggedleft\arraybackslash}m{2cm}|>{\raggedleft\arraybackslash}m{1.3cm}|>{\raggedleft\arraybackslash}m{2cm}|>{\raggedleft\arraybackslash}m{1.3cm}|}
 \hline
-     Region & \multicolumn{1}{|p{2cm}|}{Temperature Increase [$C$]} & \multicolumn{1}{|p{2cm}|}{Rain [$mm$]} & \multicolumn{1}{|p{1.3cm}|}{Flood Risk [\%]} & \multicolumn{1}{|p{2cm}|}{$CO_2$ Emiss- ions [$kt CO_2$]} & \multicolumn{1}{|p{1.3cm}|}{Fire Risk [$-$]} \\
+     Region & \multicolumn{1}{|p{2cm}|}{Temperature Increase [$C$]} & \multicolumn{1}{|p{2cm}|}{Rain [$mm$]} & \multicolumn{1}{|p{1.3cm}|}{Flood Risk [\%]} & \multicolumn{1}{|p{2cm}|}{$CO_2$ Emiss- ions [$kt CO_2$]} \\
      \hline
-     North East England & 1.310216618 & 34.64543189 & 0.16 & 14821.2 & - \\\hline
-    North West England & 1.234132058 & 47.9029482 & 0.11 & 41921.9 & - \\\hline
-    Yorkshire and the Humber & 1.563126672 & 33.81479328 & 0.69 & 36938.7 & - \\\hline
-    East Midlands & 1.05967585 & 28.5870585 & 0.22 & 30197.7 & - \\\hline
-    West Midlands & 0.931622388 & 31.71592436 & 0.07 & 31551.8 & - \\\hline
-    East of England & 1.586752957 & 26.11977272 & 0.08 & 36562.2 & - \\\hline
-    London & 1.703314869 & 29.98249621 & 0.10 & 28369.3 & - \\\hline
-    South East England & 1.370755049 & 35.48214576 & 0.14 & 40399.6 & - \\\hline
-    South West England & 0.718199346 & 45.66582055 & 0.17 & 30372.1 & - \\\hline
-    Wales & 0.710093123 & 58.76975534 & 0.11 & 27303 & - \\\hline
-    Scotland & 0.83530936 & 54.7447184 & 0.07 & 37944.7 & - \\\hline
-    Northern Ireland & 0.490934677 & 39.6731276 & 0.07 & 21145.7 & - \\
+     North East England & 1.310216618 & 34.64543189 & 0.16 & 14821.2 \\\hline
+    North West England & 1.234132058 & 47.9029482 & 0.11 & 41921.9 \\\hline
+    Yorkshire and the Humber & 1.563126672 & 33.81479328 & 0.69 & 36938.7 \\\hline
+    East Midlands & 1.05967585 & 28.5870585 & 0.22 & 30197.7 \\\hline
+    West Midlands & 0.931622388 & 31.71592436 & 0.07 & 31551.8 \\\hline
+    East of England & 1.586752957 & 26.11977272 & 0.08 & 36562.2 \\\hline
+    London & 1.703314869 & 29.98249621 & 0.10 & 28369.3 \\\hline
+    South East England & 1.370755049 & 35.48214576 & 0.14 & 40399.6 \\\hline
+    South West England & 0.718199346 & 45.66582055 & 0.17 & 30372.1 \\\hline
+    Wales & 0.710093123 & 58.76975534 & 0.11 & 27303 \\\hline
+    Scotland & 0.83530936 & 54.7447184 & 0.07 & 37944.7 \\\hline
+    Northern Ireland & 0.490934677 & 39.6731276 & 0.07 & 21145.7 \\
     \hline
 \end{tabular}
 \caption{Risk Data}
@@ -110,15 +119,16 @@ Risk data was gathered in order to define the exposure of climate changes occurr
 \vspace{-.5cm}
 \subsubsection{Temperature Increase}
 United Kingdom Climate Projections User Interface (UKCP UI) provides tools and data of the latest updates for climate projections, enabling users to follow future climate trends in the UK. The service provide regional, global, probabilistic, marine and derived projections. Their website offered the possibility to download data observed from weather stations from HadUK-Grid. We downloaded annually mean temperature data and compared the average temperature for the first 10 years of the data set with the average temperature for the last 10 years. The value for the increase is the difference.  
-\cite{noauthor_uk_nodate}
+\cite{uk}
 \subsubsection{Rainfall}
-As UKCP UI provide data on climate projections, we used the same dataset as for temperature for gathering data of the monthly rainfall in $mm$ from 1962-2020 and calculated the standard deviation using the N method for each region of the UK. \cite{noauthor_uk_nodate}
+As UKCP UI provide data on climate projections, we used the same data-set as for temperature for gathering data of the monthly rainfall in $mm$ from 1962-2020 and calculated the standard deviation using the N method for each region of the UK. \cite{uk}
 \subsubsection{Flood Risk}
-The gov.uk official statistics website offers data on floods and flood risk and it provides the possibility for reviewing the long-term flood risk exposure for each postal code in the UK. The data contains a percentage value for the probability for a flooding event in the next year. The underlying data set has been extracted. An additional data set mapping the millions of postal codes to the NUTS regions was used to derive the average flood risk in each region. The Jupyter Notebook can be found in the additional materials in the folder containing the raw data for the flood risk. \cite{noauthor_open_nodate,noauthor_postcode_nodate}
+The gov.uk official statistics website offers data on floods and flood risk and it provides the possibility for reviewing the long-term flood risk exposure for each postal code in the UK. The data contains a percentage value for the probability for a flooding event in the next year. The underlying data set has been extracted. An additional data set mapping the millions of postal codes to the NUTS regions was used to derive the average flood risk in each region. The Jupyter Notebook can be found in the additional materials in the folder containing the raw data for the flood risk. \cite{open,postcode}
 \subsubsection{$CO_2$ Emissions}
 Regional $CO_2$ emissions data from 2005 to 2019 could be directly sourced and downloaded from the official gov.uk statistics website. \cite{uk,ukc}
 \subsubsection{Fire Risk}
-Regional fire risk data was difficult to detect. The only usable data we could access was charts denoting the fire number and burnt area per year for England, North Ireland, Scotland and Wales. These were manually transcribed, but not further used. \cite{countryprofile}
+Regional fire risk data was difficult to find. The only usable data we could access was charts denoting the fire number and burnt area per year for England, North Ireland, Scotland and Wales. These were manually transcribed, but due to the data limitations these were not used in the model. \cite{countryprofile}
+
 
 \subsection{Asset Data}
 Asset data were gathered to define a set of available resources with economical value in the UK regions as well as population data. The value of the resources available and risks related to climate change on the specific asset will define what costs an exposure will inflict. An overview of the asset values is represented in tables \ref{assetdata1} and \ref{assetdata2}.
@@ -193,25 +203,25 @@ Northern Ireland & 1'055'430 & 1'895'510 & 14'130 & 134.1479122 & 591.6 \\\hline
 GDP was used as a measure of the size of the regional economies. ons.gov.uk provide estimates of regional GDP for all ITL regions data sets available for download. \cite{regional}
 \subsubsection{Motorway Infrastructure}
 gov.uk publish data and statistics on road conditions, including motorway data. We collected data about miles of motorway in the UK regions. Northern Ireland was lacking in the gov.uk dataset and was collected by multiplying the miles of each motorway from Wikipedia.
-\cite{road,noauthor_categorymotorways_2013}%,2022roads}
+\cite{road,2013category}%,2022roads}
 \subsubsection{Port Infrastructure}
 gov.uk publish port and domestic waterborne freight statistics produced by Department of Transport. We gathered the data for all freight (million) gross tonnage traffic by port and year and divided them by the region of placement.
 \cite{port}
 \subsubsection{Energy Generation}
 The electricity generated in each region was collected from gov.uk publication for energy trends. In the dataset we accessed there was a total value for England and not divided into regions. Therefore, we distributed the total GWh energy generation on the regions based on population, assuming that the amount of energy generated for a region is in correlation with the population. 
 \cite{energy}
-\subsubsection{Agricultural Land use}
+\subsubsection{Agricultural Land Use}
 Land used for agriculture were gathered form eurostat Data Browser for Farm structure and Farm land use for NUTS 2 regions in the UK. The values for hectars Farm land were added together for the NUTS 1 regions.
 \cite{statistics}
 \subsubsection{Population}
-The population for each region were selected from Statista in absolute numbers. The population density was derived by dividing the absolute numbers by the area of the region. \cite{noauthor_uk_nodate,regional,uk,noauthor_international_2022}
+The population for each region were selected from Statista in absolute numbers. The population density was derived by dividing the absolute numbers by the area of the region. \cite{uk,regional,uk,2022international}
 \subsubsection{Area}
 The area was collected as $km^2$ from the Wikipedia page for International Territorial Level NUTS 1 regions of UK.
-\cite{noauthor_international_2022,regional,uk}
+\cite{2022international,regional,uk}
 \subsubsection{Income}
 The median weekly income for full-time employees in UK by regions was collected from Statista.
 \cite{fulltime,2022list}
-
+\newpage
 \section{Monetary Value and Risk Estimation}
 \subsection{Valuation of Assets}
 %\cite{ukb,uka,total,2022list}
@@ -242,35 +252,11 @@ Northern Ireland & 52'812'126'611 & 2'100'000'000 & 647'411'398.54 & 1'885'844'6
     \label{assetvalue}
 \end{table}
 
-% \begin{table}[H]
-%     \centering
-%     \begin{tabular}{|l|>{\raggedleft\arraybackslash}m{2.3cm}|>{\raggedleft\arraybackslash}m{2.2cm}|>{\raggedleft\arraybackslash}m{2.4cm}|>{\raggedleft\arraybackslash}m{2.5cm}|>{\raggedleft\arraybackslash}m{2.2cm}|>{\raggedleft\arraybackslash}m{2.2cm}|}
-%     \hline
-%     \multicolumn{7}{|c|}{}\\
-%     \multicolumn{7}{|c|}{Value of assets / risks in $pounds$}\\
-%     \multicolumn{7}{|c|}{}\\\hline
-%     Region & \multicolumn{1}{|p{2.3cm}|}{Ports} & \multicolumn{1}{|p{2.2cm}|}{Motorway Infrastructure} & \multicolumn{1}{|p{2.4cm}|}{Agricultural Land} & \multicolumn{1}{|p{2.5cm}|}{Energy Generation}& \multicolumn{1}{|p{2.2cm}|}{Private Wealth} & $CO_2$\\\hline
-% North East England & 17'494'388'777 & 1'080'000'000 & 393'698'856.21 &  2'254'622'029.91 & 3.1403E+11 & 1'067'126'400 \\\hline
-% North West England & 46'211'913'158 & 12'240'000'000 & 654'459'480.33  &  6'196'305'435.18 & 1.05528E+12 & 3'018'376'800 \\\hline
-% Yorkshire and the Humber & 51'902'854'958 & 8'310'000'000 & 738'870'841.16 & 4'647'867'213.54 & 7.19839E+11 & 2'659'586'400 \\\hline
-% East Midlands & 478'920'570	& 3'720'000'000 & 738'926'048.06 & 4'092'137'432.56 & 6.40159E+11 & 2174234400 \\\hline
-% West Midlands & 0 & 8'310'000'000 & 578'280'082.76 & 5'014'205'457.23 & 7.94236E+11 & 2271729600 \\\hline
-% East of England & 48'920'214'122 & 4'950'000'000 & 866'233'175.64 & 5'272'599'069.60 & 9.27171E+11 & 2'632'478'400 \\\hline
-% London & 46'618'459'373 & 1'110'000'000 & 7'784'173.89 & 7'571'429'391.10 & 2.55429E+12 & 2'042'589'600 \\\hline
-% South East England & 237'864'027'008 & 12'300'000'000 & 720'204'772.49 & 7'752'064'887.67 & 1.61266E+12 & 2'908'771'200 \\\hline
-% South West England & 14'733'096'604 & 6'120'000'000 & 1'136'863'567.91 & 4'759'551'097.28 & 8.03558E+11 & 2'186'791'200 \\\hline
-% Wales & 55'032'564'903 & 2'640'000'000 & 1'068'106'432.28 & 5'746'071'907.04 & 3.83698E+11 & 1'965'816'000 \\\hline
-% Scotland & 54'190'549'914 & 8'850'000'000 & 3'671'161'170.74 & 10'036'510'241.68 & 8.20945E+11 & 2'732'018'400 \\\hline
-% Northern Ireland & 52'812'126'611 & 2'100'000'000 & 647'411'398.54 & 1'885'844'698.04 & 2.45735E+11 & 1'522'490'400    \\\hline   
-%     \end{tabular}
-%     \caption{Valuation of assets}
-%     \label{assetvalue}
-% \end{table}
 \vspace{-.5cm}
 \begin{itemize}
     %\item The assumption is that the productivity is an inherent property of the regions and does not change with the population density. The productivity was derived by dividing the GDP in each region by the population in the region. \textcolor{red}{control, not needed in the table!}
-    \item Value of ports: gov.uk post data about the the total value of goods traded through UK ports in 2014. The value was 29.2 per cent of the GDP in 2014 and for simplicity there was made an assumption that this ratio is constant. Hence, the total value of all ports in our data set was assumed to be 29.2 per cent of the total GDP. We calculated the share of tonnage for each region and then multiplied by 29.2 per cent of total GDP. \cite{uka}
-    \item Value of motorway infrastructure: We found the average cost per mile of new motorways in the UK from a BBC article. This value of 30 million pounds was multiplied by each regions value for miles of motorway. This gave an estimation of the value of motorways in each region of the UK. \cite{noauthor_uks_2011}
+    \item Value of ports: gov.uk post data about the the total value of goods traded through UK ports in 2014. The value was 29.2 per cent of the GDP in 2014 and for simplicity there was made an assumption that this ratio is constant. Hence, the total value of all ports in our data set was assumed to be 29.2 per cent of the total GDP. We calculated the share of tonnage for each region and then multiplied it by 29.2 per cent of total GDP. \cite{uka}
+    \item Value of motorway infrastructure: We found the average cost per mile of new motorways in the UK from a BBC article. This value of 30 million pounds was multiplied by each regions value for miles of motorway. This gave an estimation of the value of motorways in each region of the UK. \cite{2011uk}
     \item Value of agricultural land: gov.uk post data about total income from farming in the UK, where we found that in total agriculture's' contribution to the UK economy was £11'222 million in 2021. We used this total value for calculating the mean value of 1 $km^2$ agriculture land, and then we multiplied with each region square meters to get an value estimation for agriculture land in each region. \cite{total}
     \item Energy generation: Statista provide electricity prices from 2010 to 2020. We used the average energy price for 2020 in GBP per GWh and multiplied with the total energy production in GWh for each region, resulting in an estimation of the total energy value for each region. \cite{ukb}
     
@@ -280,12 +266,12 @@ Northern Ireland & 52'812'126'611 & 2'100'000'000 & 647'411'398.54 & 1'885'844'6
 \subsection{Risk Estimation and Valuation}
 
     To quantify and therefore compare the different risk categories, we connected the different categories to the identified assets and calculated the resulting risk valuation. The calculation steps are explained in the following.
-    First, every team member independently estimated the effect of each identified risk on the given assets which are explained in \ref{sec:data} (??). The identified risks are the following:
+    First, every team member independently estimated the effect of each identified risk on the given assets which are explained in section \ref{sec:data}. The identified risks are the following:
     \begin{itemize}  
         \item Temperature increase risk
         \item Rain risk
         \item Flood risk
-        \item Emissions risk (CO2 cost \cite{noauthor_uk_2022}) (do we need source here?)
+        \item Emissions risk (CO2 cost \cite{2022uk})
     \end{itemize}
     The scale used for the influence estimation reaches from 0 - no influence to 3 - very high influence. The calculated influence is then the average of the different estimations. To check the validity of the estimations, each standard deviation is calculated. The influence values were then scaled to an overall scale of 0 to 1, meaning that the highest value of the whole table is 1 while the lowest for the whole table is 0. The calculated influences can be seen in table \ref{est mean}.
     \begin{table}[H]
@@ -356,7 +342,7 @@ Northern Ireland & 52'812'126'611 & 2'100'000'000 & 647'411'398.54 & 1'885'844'6
         \label{risk aggregation}
     \end{equation}
 \section{Model}
-
+\newpage
 The model uses the following structure to estimate the welfare after transfer payments and reallocation of people. Index $i$ denotes the ITL region.
 The model runs multiple times (t = 10). Each run represents one year. The reason is, a change in population though reallocation of people due to a change in attractiveness with the transfer payments the properties of the region are changing. A changing population has an affect on risk per capita formula \ref{risk per capita} and population density formula \ref{population density} with consequences to all following equations. At each consecutive run the newly crated population allocation in the UK is used to calculate the resulting welfare of the transfer schedule.
 \newline
@@ -388,15 +374,15 @@ The following correlation formula \ref{wage pop density} of wages $w_{i,t}$ and 
     \label{wage pop density}
 \end{equation}
 
-\begin{center}
-    $\downarrow$
-\end{center}
-Following correlation formula \ref{housing price} of real estate prices $h_i$ to population density $pd_{i,t}$, wages $w_{i,t}$, and financing rate of over 20 years is found to estimate the yearly amount spend by residents on housing $h_{i,t}$ in each region (see figure \ref{dg:housing-pop}):
-\begin{equation}
-%unkown at the moment NILS has to tell me
-    h_{i,t} = \frac{(0.0014*pd_{i,t}+7.0373) * w_{i,t}}{20}
-    \label{housing price}
-\end{equation}
+%\begin{center}
+%    $\downarrow$
+%\end{center}
+%Following correlation formula \ref{housing price} of real estate prices %$h_i$ to population density $pd_{i,t}$, wages $w_{i,t}$, and financing %rate of over 20 years is found to estimate the yearly amount spend by %residents on housing $h_{i,t}$ in each region (see figure \ref{dg:housing-%pop}):
+%\begin{equation}
+%%unkown at the moment NILS has to tell me
+%    h_{i,t} = \frac{(0.0014*pd_{i,t}+7.0373) * w_{i,t}}{20}
+%    \label{housing price}
+%\end{equation}
 
 \begin{center}
     $\downarrow$
@@ -413,9 +399,9 @@ A transfer payment scheme is used to reallocate money from one region to another
 \begin{center}
     $\downarrow$
 \end{center}
-The attractiveness of a given regions is provided by formula \ref{attractiveness region}. Factor $b_i$, wage, transfer payment, housing expense, and risk per capita in the region is taken into account: 
+The attractiveness of a given regions is provided by formula \ref{attractiveness region}. Factor $b_i$, wage, transfer payment, and risk per capita in the region is taken into account: 
 \begin{equation}
-    v_{i,t,tax} = \frac{b_i*(w_{i,t}+t_{i,t,tax}-h_{i,t})}{rpc_{i,t}}
+    v_{i,t,tax} = \frac{b_i*(w_{i,t}+t_{i,t,tax})}{rpc_{i,t}}
     \label{attractiveness region}
 \end{equation}
 
@@ -488,48 +474,74 @@ The motivation for this transfer schedule is the idea that we just look at the e
 Formula \ref{transfer schedule 2} gives the second transfer schedule. The underlying idea is that highly populated areas should be prioritized over sparsely populated areas since densely populated area can be saved on a lower per capita effort and a relocation few people is easier than of many. Financed is the scheme like the transfer schedule 1 with a collection of taxes and redistribution accordingly. 
 
 \subsection{Transfer Schedule 3}
+\begin{multline}
+    t_{i,t,tax} = \sum_{i}{tax * 100 * \frac{(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})-\min(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})}{\max(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})-\min(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})}}*\frac{H_{i,0}}{\sum_{i}H_{i,0}}\\-tax*100 * \frac{(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})-\min(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})}{\max(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})-\min(1-\frac{rpc_{i,0}}{\sum_{i}rpc_{i,0}})}
+    \label{transfer schedule 3}
+\end{multline}
 
-\textcolor{red}{More detailed explanations are probably helpful here, explain every part of the equation when mentioning it}
-
+Equation \ref{transfer schedule 3} determines the taxes a region needs to pay respectively subventions a region gets. This means that the paid tax varies for the different region. The risk assessment is therefore scaled to a range of 0 to 100 and then the taxed are payed accordingly. Based on this, the most impacted region by risk gets the most while the safest region needs to pay the most.
+\newpage
 \section{Evaluation and Results}
 \subsection{General Approach}
 The population in our model allocate according to the attractiveness of each region. Transfers affect the attractiveness of a region and therefore lead to a change in the allocation of the population. This, in turn, also alters the attractiveness of each region. It is an iterative process for each year. Hence, for each transfer model, we plotted the resulting welfare against the tax rate for 1,2,5 and 10 years after implementing the transfer schedule. Note that these are per year values, not accumulated values.
 \\
-The base values are the inherent attractiveness of each region and the welfare before a transfer schedule introduced. Both are calculated by using the population and economic data. The code used to obtain results can be found in the attachments or in \textcolor{red}{Here a source that links to the code}
+The base values are the inherent attractiveness of each region and the welfare before a transfer schedule introduced. Both are calculated by using the population and economic data. The code used to obtain results can be found in the attachments or in the public project github repository\cite{art2022nick4rt}.
 \subsection{Transfer Schedule 1: Compensating for the Risk}
 The first and easiest transfer schedule consists of the collection of a tax as the percentage of the wages in each region and redistributes the money according to the risk per capita in each region.
-\begin{figure}
+\begin{figure}[H]
     \centering
-    \includegraphics{Schedule1.png}
-    \caption{Welfare effect of transfer schedule 1}
+    \includegraphics[width=\textwidth]{Report/Schedule_1_graphics.png}
+    \caption{Absolute and relative welfare effect of transfer schedule 1}
     \label{fig:sche1}
 \end{figure}
-Figure \ref{fig:sche1} shows the effect of the measure on the total welfare depending on the tax, expressed as a percentage of the income. After one year, the welfare effect is a monotonously decreasing function, the function for the effect on welfare after 10 years has a minimum welfare at about eight\%. For each of the functions, there is a plateau where the loss in welfare stays at a constant level of about -0.8 trillion pounds. Overall, however, every taxation, when redistributed only according to the risk in each region reduces the total welfare. 
+Figure \ref{fig:sche1} shows the effect of the measure on the total welfare depending on the tax, expressed as a percentage of the income. After one year, the welfare effect is a monotonously decreasing function, the function for the effect on welfare after 10 years has a minimum welfare at about five\%. For each of the functions, there is a plateau where the loss in welfare stays at a constant level of about -0.8 trillion pounds. Overall, however, every taxation, when redistributed only according to the risk in each region reduces the total welfare by one to five percent depending on the considered time frame. 
 \\
 A possible reason for that result is that the regions in the UK with the highest risk are also the ones that are least productive, every transfer of money and in the consequence of citizens to those regions decreases the total productivity of the nation.
 \subsubsection{Limitations and Consequences}
-One can argue that the assumption of constant productivity per region is a weakness of the model because individuals might maintain their productivity when moving. Agent bases models can be more accurate in capturing dynamic with individual traits of individual citizens but those models far exceed the scope of this model.
+One can argue that the assumption of constant productivity per region is a weakness of the model because individuals might maintain their productivity when moving. Agent bases models can be more accurate in capturing dynamic with individual traits of individual citizens but those models far exceed the scope of this paper.
 \\
-\subsection{Transfer Schedule 2: A more efficient transfer}
+\subsection{Transfer Schedule 2: A More Efficient Transfer}
 Addressing the major weakness of the first transfer schedule: Producing a decrease in welfare, this model aims at redistributing the collected taxes more efficiently.
 The second transfer schedule transfers the money into the regions that have a high risk but also a high population density. The rationale is that the transfer most likely going to be invested into preventive measures, those are most efficient if they protect many citizens.
 Technically, a risk value and value for the population density is assigned to each region according to population and risk data. The values are multiplied and normalized. This normalized value for a region is the percentage of received transfers from the total transfers.
 \\
-With this schedule the welfare increase increases monotonously with higher tax rates, plateauing at about 1.6 trillion pounds. The calculation for 10 years after introduction of the measure shows that tax rates of below 10\% are sufficient to reach the maximum welfare increase.
-\begin{figure}
+With this schedule the welfare increase increases monotonously with higher tax rates, plateauing at about 1.6 trillion pounds. The calculation for 10 years after introduction of the measure shows that tax rates of below 10\% are sufficient to reach the maximum welfare increase of more than 70\% for a time frame of 10 years.
+\begin{figure}[H]
     \centering
-    \includegraphics{Report/schedule2.png}
-    \caption{Welfare effect of transfer schedule 2}
+    \includegraphics[width=\textwidth]{Report/Schedule_2_graphics.png}
+    \caption{Absolute and relative welfare effect of transfer schedule 2}
     \label{fig:sche2}
 \end{figure}
-\\
-\subsection{Limitations and Additional models}
-With the second transfer schedule yielding increases in welfare, one might be inclined to suggest policies similar to the transfer model. In reality, however, there are lots of feedback loops that have to be accounted for. Furthermore, in reality, there is moving stickiness, people do not easily move. Residential patterns are persistent over time regardless of whether their root cause is still effective. \cite{heblich_east-side_2021}
+%\\
+\subsection{Transfer Schedule 3: Varying Tax Rates}
+Testing another schedule of varying tax rates which are connected to the risk for each region, a linear dependency of the welfare increase on the tax factor is detected as shown in Figure \ref{fig:sche3}. An increase in the analyzed time frame shows the same multiplier effect that is observed in the previous transfer schedules. The overall impact on welfare is significantly lower than in the previous models with an increase of welfare of around 0.01\% in at a tax rate of 10\% with a time frame of 10 years.
+The linearity of the model compared to the exponential behavior of the previous models shows that the schedule brings a lower dynamic into the model and behaves more predictable. The lack of an asymptote however shows that there is no real limit to welfare growth. This shows the limitation of the model that not all factors within the dynamics of a transfer model can be considered.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Report/Schedule_3_graphics.png}
+    \caption{Absolute and relative welfare effect of transfer schedule 3}
+    \label{fig:sche3}
+\end{figure}
+
+\subsection{Additional Models}
+With the second transfer schedule yielding increases in welfare, one might be inclined to suggest policies similar to the transfer model. In reality, however, there are lots of feedback loops that have to be accounted for. Furthermore, in reality, there is moving stickiness, people do not easily move. Residential patterns are persistent over time regardless of whether their root cause is still effective. \cite{heblich2021eastside}
 \\
 In the data, there is a positive correlation between population density and productivity of a region. In our model we assumed to productivity per region to be constant, therefore, if everyone would move into the region with the highest productivity, the welfare would be maximized. In the real world, this has limitations.
 \\
-The first limitation we wanted to account for is the cost of housing in more densly populated areas. Plotting the cost of a house as a multiple of the average income in the region against the population density and applying a regression model yields a small increase in housing prices with rising population density. We constructed a model that subtracts a 30th of the purchasing price (calculated via the obtained regression function) of a house from the income per capita, as this is a usual repayment period. With this addition to the income, the first two transfer schedules were tested again. This approach yields a far less dynamic model in which the tax rate affects welfare less the the housing prices. In figure \ref{fig:housing} one can see that the housing price becomes the dominant factor, even contradicting further results: For some year the first schedule leads to an increase and the second schedule to a decrease in total welfare.
-\begin{figure}
+The first limitation we wanted to account for is the cost of housing in more densly populated areas. Plotting the cost of a house as a multiple of the average income in the region against the population density and applying a regression model yields a small increase in housing prices with rising population density. We constructed a model that subtracts a 30th of the purchasing price (calculated via the obtained regression function) of a house from the income per capita, as this is a usual repayment period. With this addition to the income, the first two transfer schedules were tested again. (See formula \ref{housing price} for the estimate on yearly amount spend by residents on housing and figure \ref{dg:housing-pop} for the correlation of housing expense and population density; formula \ref{attractiveness region with housing} for the new attractiveness $v_{i,t,tax}$ in the model) This approach yields a far less dynamic model in which the tax rate affects welfare less the the housing prices. In figure \ref{fig:housing} one can see that the housing price becomes the dominant factor, even contradicting further results: For some year the first schedule leads to an increase and the second schedule to a decrease in total welfare.
+\\
+\begin{equation}
+%unkown at the moment NILS has to tell me
+    h_{i,t} = \frac{(0.0014*pd_{i,t}+7.0373) * w_{i,t}}{30}
+    \label{housing price}
+\end{equation}
+\begin{equation}
+    v_{i,t,tax} = \frac{b_i*(w_{i,t}+t_{i,t,tax}-h_{i,t})}{rpc_{i,t}}
+    \label{attractiveness region with housing}
+\end{equation}
+
+\begin{figure}[H]
 \centering
 \begin{subfigure}{.45\textwidth}
     \centering
@@ -546,14 +558,14 @@ The first limitation we wanted to account for is the cost of housing in more den
 \end{figure}
 \subsubsection{Limitations}
 By introducing housing prices to the model, we added an additional feedback loop. This loop changes the results notably and becoming the dominant factor for the total welfare. In a real-world scenario, there are a lot more feedback loops with a potential effect on the welfare: Transfers can be spent as investment, increasing attractivity of the regions; the productivity of individuals might stay constant independent of their place of residence; investments to mitigate risks like dams could decrease the risk in the regions; and many more. This enumeration illustrates that our models, in their current state, do not suffice to justify real world transfers of the magnitude mentioned in this paper.
+\newpage
 \section{Conclusion}
-Within the project, we developed three different transfer schedules for risk mitigation in the UK on NUTS 1 level. The three different analyzed transfers were a general tax and a distribution based on the risk per region, a distribution based on the risk and population density per region and an unequal tax redistribution based on risk. 
-To analyze the transfer schedules' effect on overall welfare, we build a model to derive the attractivity of each region which is then transferred into welfare. The data is based on a monetary evaluation of the risks in each region. 
+Within the project, we developed four different transfer schedules for risk mitigation in the UK on NUTS 1 level. The three different analyzed transfers were a general tax and a distribution based on the risk per region, a distribution based on the risk and population density per region and an unequal tax redistribution based on risk. 
+To analyze the transfer schedules' effect on overall welfare, we built a model to derive the attractiveness of each region which is then transferred into welfare. The data is based on a monetary evaluation of the risks in each region. 
 The analysis shows that population density needs to be taken into account in order to have a positive impact on welfare. This is derived from a comparison of the first two schedules of which the first lowers overall welfare by more than 5\% at a tax rate of 10\% while the second - considering population - improves overall welfare of up to 70\% at the same tax rate. Looking at the third transfer schedule which differentiates between different risk categories to derive individual tax rates, we see a different and almost negligible behavior in the welfare increase which reaches 0.0005\% welfare increase at a tax rate of 10\%. With a growing tax rate, the increase in welfare is linear and not exponential which makes the schedule less sensitive to changes in the tax rate but also less efficient in total welfare increase. These findings already show that an efficient money transfer within the UK can mitigate given risks and increase welfare. The sensitivity of welfare on the given transfer schedule is significant. An implementation of a transfer method must therefore be chosen carefully and tested in more sophisticated models. Furthermore, a multiplier effect can be detected from the different analyses. It shows that the effect of a schedule on welfare increases over time due to the dynamics of the model. The importance to find a working schedule and test it in a sophisticated model is therefore even underline since both, negative and positive consequences on welfare are amplified over time.
 To conclude, the analysis shows that the transfer schedule must be chose carefully to achieve a positive impact on welfare and risk mitigation. To identify a reliable schedule to implement and optimize its behavior, more sophisticated models and simulations need to be executed.
 \newpage
 \section{Appendix}
-List of tables and list of figures
 
 \begin{figure}[H]
   \centering
@@ -570,5 +582,9 @@ List of tables and list of figures
 \end{figure}
 
 \newpage
+\listoftables
+\listoffigures
 \printbibliography
+
+%\listofequations
 \end{document}
