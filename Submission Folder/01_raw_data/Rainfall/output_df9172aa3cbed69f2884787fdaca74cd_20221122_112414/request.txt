@@ -1,0 +1,10 @@
+Area = admin_region|all
+Collection = land-obs_admin_region
+DataFormat = csv
+JobLabel = None
+TemporalAverage = mall
+TimeSlice = 1862|2020
+Variable = rainfall
+
+Process Identifier = LS6_Subset_01
+Software Version = WPS-2.7.0-DP-2.7.0-CV-1.0.8
