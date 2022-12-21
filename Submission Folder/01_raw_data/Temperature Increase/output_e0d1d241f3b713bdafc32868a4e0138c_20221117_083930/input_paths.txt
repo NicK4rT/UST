@@ -1,1 +1,0 @@
-http://data.ceda.ac.uk/badc/ukmo-hadobs/data/insitu/MOHC/HadOBS/HadUK-Grid/v1.0.3.0/region/tasmax/seas/v20210712/tasmax_hadukgrid_uk_region_seas_188401-202012.nc
